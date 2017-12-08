@@ -7,9 +7,11 @@
 //
 import Foundation
 import UIKit
+import CoreData
 
 class ArticleListTableViewController: UITableViewController {
     
+    var articles: [NSManagedObject] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,20 @@ class ArticleListTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Article")
+        do {
+            articles = try managedContext.fetch(fetchRequest)
+        }
+        catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
         
         tableView.reloadData()
         
@@ -98,14 +114,29 @@ class ArticleListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(
-            
+
             withIdentifier: "ArticleListTableViewCell",
-            
+
             for: indexPath
-            
+
         ) as! ArticleListTableViewCell
         
+        cell.articleImageView.clipsToBounds = true
         
+        cell.articleImageView.layer.cornerRadius = 10
+
+        
+        let article = articles[indexPath.row]
+        
+        cell.articleTitle.text = article.value(forKeyPath: "title") as? String
+        
+        guard
+            let imageData = article.value(forKeyPath: "image") as? Data
+            
+        else { return cell }
+            
+        cell.articleImageView.image = UIImage(data: imageData)
+    
 
 
         return cell

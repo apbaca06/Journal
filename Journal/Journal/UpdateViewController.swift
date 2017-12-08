@@ -35,6 +35,7 @@ class UpdateViewController: UIViewController, UITextFieldDelegate,UIImagePickerC
         setLongPressGesture()
         
         closeButton.addTarget(self, action: #selector(closeViewController), for: .touchUpInside)
+        
 
         
     }
@@ -90,6 +91,8 @@ class UpdateViewController: UIViewController, UITextFieldDelegate,UIImagePickerC
             else { return }
         
         articleImage.image = selectedImage
+        
+        articleImage.contentMode = .scaleAspectFit
         
         dismiss(animated: true, completion: nil)
         

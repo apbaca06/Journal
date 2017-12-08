@@ -16,8 +16,16 @@ class ArticleHeaderView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+      
+        headerTitle.font = .systemFont(ofSize: 20, weight: .semibold)
+     
+        headerTitle.textAlignment = NSTextAlignment(rawValue: Int(-0.5))!
         
+        plusButton.imageView?.image = #imageLiteral(resourceName: "icon_plus")
         
+        plusButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
+        
+        plusButton.tintColor = UIColor(red: 237/255, green: 96/255, blue: 81/255, alpha: 1)
     }
     
     

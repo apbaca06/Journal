@@ -21,11 +21,17 @@ class EditViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCon
     
     @IBOutlet weak var closeButton: UIButton!
     
+    let gradientLayer = CAGradientLayer()
+    
+    private let gradientView = UIView()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         
         return .lightContent
         
     }
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
     
     
     override func viewDidLoad() {
@@ -36,8 +42,16 @@ class EditViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCon
         
         setLongPressGesture()
         
+        setUpGradientColor()
+
+        
         closeButton.addTarget(self, action: #selector(closeViewController), for: .touchUpInside)
-       
+        
+        articleImage.image?.withRenderingMode(.alwaysTemplate)
+        
+        articleImage.tintColor = .white
+    
+        
     }
     
     func setLongPressGesture() {
@@ -90,7 +104,9 @@ class EditViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCon
             let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         else { return }
         
+    
         articleImage.image = selectedImage
+        articleImage.contentMode = .scaleAspectFit
         
         dismiss(animated: true, completion: nil)
         
@@ -111,17 +127,12 @@ class EditViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCon
     
     @objc func saveArticle() {
         
-        let newArticle = Article(
-            
-            title: articleTitle.text,
-            
-            text: articleText.text
-        )
+        
+        let articleTitle = NSEntityDescription.entity(forEntityName: "Article", in: context!)
         
         
         articles.append(newArticle)
-        
-        print(articles)
+        )
         
         dismiss(animated: true, completion: nil)
     
@@ -131,6 +142,27 @@ class EditViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCon
         
         dismiss(animated: true, completion: nil)
         
+    }
+    
+    func setUpGradientColor() {
+
+//        gradientLayer.colors = [
+//            UIColor(red: 67.0 / 255.0, green: 87.0 / 255.0, blue: 97.0 / 255.0, alpha: 1.0).cgColor,
+//            UIColor(red: 26.0 / 255.0, green: 34.0 / 255.0, blue: 38.0 / 255.0, alpha: 1.0).cgColor
+//        ]
+//
+//        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+//
+//        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+//
+//        gradientView.layer.insertSublayer(
+//            gradientLayer,
+//            at: 0
+//        )
+//
+//        gradientView.frame = articleImage.bounds
+//
+//        articleImage.addSubview(gradientView)
     }
 
 
