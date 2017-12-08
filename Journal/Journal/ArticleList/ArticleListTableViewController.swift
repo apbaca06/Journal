@@ -11,7 +11,7 @@ import CoreData
 
 protocol ArticleCellDelegate : class {
     
-    func manager(didGet article: NSManagedObject)
+    func manager(_ manager: ArticleListTableViewController,didGet article: NSManagedObject)
     
 }
 
@@ -170,9 +170,8 @@ class ArticleListTableViewController: UITableViewController{
             
             from: .update
         )
-        print(articles[indexPath.row])
         
-        self.delegate?.manager(didGet: articles[indexPath.row])
+        self.delegate?.manager(self, didGet: articles[indexPath.row])
         
         present(updateViewController, animated: true, completion: nil)
         

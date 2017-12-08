@@ -178,8 +178,14 @@ class EditViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCon
     
     func setUpGradientColor() {
 
-//        gradientLayer.colors = [
+//        let gradient = CAGradientLayer()
+//
+//        gradient.frame.size = articleImage.frame.size
+//
+//        gradient.colors = [
+//
 //            UIColor(red: 67.0 / 255.0, green: 87.0 / 255.0, blue: 97.0 / 255.0, alpha: 1.0).cgColor,
+//
 //            UIColor(red: 26.0 / 255.0, green: 34.0 / 255.0, blue: 38.0 / 255.0, alpha: 1.0).cgColor
 //        ]
 //
@@ -187,17 +193,18 @@ class EditViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCon
 //
 //        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
 //
-//        gradientView.layer.insertSublayer(
-//            gradientLayer,
-//            at: 0
-//        )
+//        articleImage.layer.insertSublayer(gradient, at: 0)
 //
-//        gradientView.frame = articleImage.bounds
+//        articleImage.image = #imageLiteral(resourceName: "icon_photo")
+//
+//        articleImage.contentMode = .center
+//
+//        articleImage.tintColor = .white
 //
 //        articleImage.addSubview(gradientView)
     }
 
 
-    
-
 }
+
+

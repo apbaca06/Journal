@@ -9,12 +9,13 @@
 import UIKit
 import CoreData
 
-class UpdateViewController: UIViewController, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate,ArticleCellDelegate {
+class UpdateViewController: UIViewController, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, ArticleCellDelegate {
     
-    
-    func manager(didGet article: NSManagedObject) {
-        print(article)
+    func manager(_ manager: ArticleListTableViewController, didGet article: NSManagedObject) {
+        self.updatedArticle = article
     }
+    
+
     
     var updatedArticle: NSManagedObject?
 
