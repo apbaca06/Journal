@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		37B9591A1FDA1EF000CED0EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B959191FDA1EF000CED0EE /* AppDelegate.swift */; };
-		37B9591C1FDA1EF000CED0EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B9591B1FDA1EF000CED0EE /* ViewController.swift */; };
 		37B9591F1FDA1EF000CED0EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37B9591D1FDA1EF000CED0EE /* Main.storyboard */; };
 		37B959221FDA1EF000CED0EE /* Journal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37B959201FDA1EF000CED0EE /* Journal.xcdatamodeld */; };
 		37B959241FDA1EF000CED0EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37B959231FDA1EF000CED0EE /* Assets.xcassets */; };
@@ -27,7 +26,6 @@
 /* Begin PBXFileReference section */
 		37B959161FDA1EF000CED0EE /* Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37B959191FDA1EF000CED0EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		37B9591B1FDA1EF000CED0EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		37B9591E1FDA1EF000CED0EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		37B959211FDA1EF000CED0EE /* Journal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Journal.xcdatamodel; sourceTree = "<group>"; };
 		37B959231FDA1EF000CED0EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				37B959191FDA1EF000CED0EE /* AppDelegate.swift */,
-				37B9591B1FDA1EF000CED0EE /* ViewController.swift */,
 				37B959371FDA240C00CED0EE /* EditViewController.swift */,
 				37B959391FDA248300CED0EE /* UpdateViewController.swift */,
 				37B959361FDA23B200CED0EE /* ArticleList */,
@@ -179,7 +176,6 @@
 				37B959341FDA239E00CED0EE /* ArticleListTableViewCell.swift in Sources */,
 				37B959221FDA1EF000CED0EE /* Journal.xcdatamodeld in Sources */,
 				37B959381FDA240C00CED0EE /* EditViewController.swift in Sources */,
-				37B9591C1FDA1EF000CED0EE /* ViewController.swift in Sources */,
 				37B9593C1FDA24AA00CED0EE /* ArticleModel.swift in Sources */,
 				37B959401FDA32F800CED0EE /* ArticleHeaderView.swift in Sources */,
 				37B959301FDA237D00CED0EE /* ArticleListTableViewController.swift in Sources */,

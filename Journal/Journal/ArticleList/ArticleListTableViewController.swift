@@ -9,17 +9,23 @@ import Foundation
 import UIKit
 
 class ArticleListTableViewController: UITableViewController {
+    
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpTableView()
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
-
+        tableView.reloadData()
         
     }
     
     func setUpTableView() {
+        
         let nib = UINib(
             nibName: "ArticleListTableViewCell",
             bundle: nil
@@ -71,8 +77,6 @@ class ArticleListTableViewController: UITableViewController {
         
         headerView.plusButton.addTarget(self, action: #selector(addArticle), for: .touchUpInside)
         
-        
-
        return headerView
     }
     
@@ -86,7 +90,16 @@ class ArticleListTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleListTableViewCell", for: indexPath) as! ArticleListTableViewCell
+        
+        let cell = tableView.dequeueReusableCell(
+            
+            withIdentifier: "ArticleListTableViewCell",
+            
+            for: indexPath
+            
+        ) as! ArticleListTableViewCell
+        
+        
 
 
         return cell

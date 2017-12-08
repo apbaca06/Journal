@@ -15,4 +15,5 @@ struct Article {
 //    var timestamp: Date = ""
 }
 
-var articles: [Article] = []
+var articles: [Article] = [] 
+

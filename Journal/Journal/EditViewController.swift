@@ -34,8 +34,13 @@ class EditViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCon
         
         setUpSaveButton()
         
-        articleImage.isUserInteractionEnabled = true
+        setLongPressGesture()
         
+        closeButton.addTarget(self, action: #selector(closeViewController), for: .touchUpInside)
+       
+    }
+    
+    func setLongPressGesture() {
         
         let longPressGesture = UILongPressGestureRecognizer(
             target: self,
@@ -46,17 +51,13 @@ class EditViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCon
         
         articleImage.addGestureRecognizer(longPressGesture)
         
-        saveButton.addTarget(self, action: #selector(saveArticle), for: .touchUpInside)
-        
-        closeButton.addTarget(self, action: #selector(closeViewController), for: .touchUpInside)
-       
+        articleImage.isUserInteractionEnabled = true
     }
     
     @objc func longPress(press:UILongPressGestureRecognizer){
         
         if press.state == .began {
-            
-            print("長按開始")
+        
             changePhoto()
             
         }
@@ -104,11 +105,24 @@ class EditViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCon
         saveButton.layer.shadowColor = UIColor(red: 247/255, green: 174/255, blue: 163/255, alpha: 1).cgColor
         
         saveButton.layer.shadowPath = UIBezierPath(rect: saveButton.bounds).cgPath
+        
+        saveButton.addTarget(self, action: #selector(saveArticle), for: .touchUpInside)
     }
     
     @objc func saveArticle() {
-        let newArticle = Article(title: articleTitle.text, text: articleText.text)
+        
+        let newArticle = Article(
+            
+            title: articleTitle.text,
+            
+            text: articleText.text
+        )
+        
+        
         articles.append(newArticle)
+        
+        print(articles)
+        
         dismiss(animated: true, completion: nil)
     
     }
