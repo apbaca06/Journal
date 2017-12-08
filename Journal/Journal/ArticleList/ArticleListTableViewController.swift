@@ -9,7 +9,15 @@ import Foundation
 import UIKit
 import CoreData
 
-class ArticleListTableViewController: UITableViewController {
+protocol ArticleCellDelegate : class {
+    
+    func manager(didGet article: NSManagedObject)
+    
+}
+
+class ArticleListTableViewController: UITableViewController{
+    
+    weak var delegate: ArticleCellDelegate?
     
     var articles: [NSManagedObject] = []
     
@@ -65,6 +73,7 @@ class ArticleListTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.separatorStyle = .none
+
         
     }
     
@@ -161,7 +170,9 @@ class ArticleListTableViewController: UITableViewController {
             
             from: .update
         )
+        print(articles[indexPath.row])
         
+        self.delegate?.manager(didGet: articles[indexPath.row])
         
         present(updateViewController, animated: true, completion: nil)
         

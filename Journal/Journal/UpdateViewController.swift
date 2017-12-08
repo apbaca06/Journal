@@ -9,7 +9,17 @@
 import UIKit
 import CoreData
 
-class UpdateViewController: UIViewController, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class UpdateViewController: UIViewController, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate,ArticleCellDelegate {
+    
+    
+    func manager(didGet article: NSManagedObject) {
+        print(article)
+    }
+    
+    var updatedArticle: NSManagedObject?
+
+    
+    
     @IBOutlet weak var articleImage: UIImageView!
     
     @IBOutlet weak var articleText: UITextView!
@@ -31,6 +41,7 @@ class UpdateViewController: UIViewController, UITextFieldDelegate,UIImagePickerC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setUpUpdateButton()
         
         setLongPressGesture()
@@ -39,6 +50,30 @@ class UpdateViewController: UIViewController, UITextFieldDelegate,UIImagePickerC
         
 
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showArticle()
+    }
+    
+    func showArticle() {
+
+        
+        articleTitle.text = updatedArticle?.value(forKeyPath: "title") as? String
+        
+        articleText.text = updatedArticle?.value(forKeyPath: "text") as? String
+        
+        
+        guard
+            let imageData = updatedArticle?.value(forKeyPath: "image") as? Data
+            
+            else { return }
+
+        articleImage.image = UIImage(data: imageData)
+        
+        articleImage.contentMode = .scaleAspectFill
+
     }
     
     func setLongPressGesture() {
