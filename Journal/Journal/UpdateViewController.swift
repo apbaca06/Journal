@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class UpdateViewController: UIViewController, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var articleImage: UIImageView!
@@ -113,17 +114,38 @@ class UpdateViewController: UIViewController, UITextFieldDelegate,UIImagePickerC
     
     @objc func updateArticle() {
         
-        let revisedArticle = Article(
-            
-            title: articleTitle.text,
-            
-            text: articleText.text
-        )
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
         
-        // Todo: revise: update to the original index
-        articles.append(revisedArticle)
+        let managedContext = appDelegate.persistentContainer.viewContext
         
-        print(articles)
+        let entity = NSEntityDescription.entity(forEntityName: "Article",
+                                                in: managedContext)!
+        
+        let article = NSManagedObject(entity: entity,
+                                      insertInto: managedContext)
+        
+        article.setValue(articleTitle.text, forKeyPath: "title")
+        
+        article.setValue(articleText.text, forKeyPath: "text")
+        
+        guard
+            let image = articleImage.image,
+            let imgData = UIImageJPEGRepresentation(image, 1)
+            
+            else { return }
+        
+        article.setValue(imgData, forKey: "image")
+        
+        do {
+            try managedContext.save()
+            
+            print(article)
+            
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
         
         dismiss(animated: true, completion: nil)
         

@@ -12,7 +12,9 @@ import CoreData
 class ArticleListTableViewController: UITableViewController {
     
     var articles: [NSManagedObject] = []
-        
+    
+    let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +32,13 @@ class ArticleListTableViewController: UITableViewController {
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Article")
         do {
+            
+            let sortByDate = NSSortDescriptor.init(key: "timestamp", ascending: false)
+            
+            fetchRequest.sortDescriptors = [sortByDate]
+            
             articles = try managedContext.fetch(fetchRequest)
+        
         }
         catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
@@ -129,6 +137,7 @@ class ArticleListTableViewController: UITableViewController {
         let article = articles[indexPath.row]
         
         cell.articleTitle.text = article.value(forKeyPath: "title") as? String
+
         
         guard
             let imageData = article.value(forKeyPath: "image") as? Data
@@ -136,6 +145,8 @@ class ArticleListTableViewController: UITableViewController {
         else { return cell }
             
         cell.articleImageView.image = UIImage(data: imageData)
+        
+        cell.articleImageView.contentMode = .scaleAspectFill
     
 
 
@@ -151,6 +162,7 @@ class ArticleListTableViewController: UITableViewController {
             from: .update
         )
         
+        
         present(updateViewController, animated: true, completion: nil)
         
     }
@@ -163,7 +175,19 @@ class ArticleListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-
+            
+            let article = articles[indexPath.row]
+            
+            managedObjectContext?.delete(article)
+            
+            do {
+                try managedObjectContext?.save()
+            }
+            catch
+                let error as NSError {
+                print("Error While Deleting Note: \(error.userInfo)")
+            }
+            
             articles.remove(at: indexPath.row)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -171,30 +195,6 @@ class ArticleListTableViewController: UITableViewController {
         }
     }
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
 }
 
@@ -213,4 +213,22 @@ extension UITableViewController {
         
     }
     
+}
+
+extension Date {
+    /**
+     Formats a Date
+     
+     - parameters format: (String) for eg dd-MM-yyyy hh-mm-ss
+     */
+    func format(format:String = "dd-MM-yyyy hh-mm-ss") -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let dateString = dateFormatter.string(from: self)
+        if let newDate = dateFormatter.date(from: dateString) {
+            return newDate
+        } else {
+            return self
+        }
+    }
 }

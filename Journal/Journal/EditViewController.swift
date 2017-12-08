@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class EditViewController: UIViewController ,UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -31,7 +32,7 @@ class EditViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCon
         
     }
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
     override func viewDidLoad() {
@@ -127,12 +128,43 @@ class EditViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCon
     
     @objc func saveArticle() {
         
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
         
-        let articleTitle = NSEntityDescription.entity(forEntityName: "Article", in: context!)
+        let managedContext = appDelegate.persistentContainer.viewContext
         
+        let entity = NSEntityDescription.entity(forEntityName: "Article",
+                                                in: managedContext)!
         
-        articles.append(newArticle)
-        )
+        let article = NSManagedObject(entity: entity,
+                                     insertInto: managedContext)
+        
+        article.setValue(articleTitle.text, forKeyPath: "title")
+        
+        article.setValue(articleText.text, forKeyPath: "text")
+        
+        let date = Date()
+        
+        article.setValue(date.format(), forKeyPath: "timestamp")
+        
+        guard
+            let image = articleImage.image,
+            let imgData = UIImageJPEGRepresentation(image, 1)
+        
+        else { return }
+        
+        article.setValue(imgData, forKey: "image")
+        
+        do {
+            try managedContext.save()
+            
+            print(article)
+            
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+
         
         dismiss(animated: true, completion: nil)
     
