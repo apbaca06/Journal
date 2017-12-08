@@ -21,6 +21,7 @@
 		37B9593C1FDA24AA00CED0EE /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B9593B1FDA24AA00CED0EE /* ArticleModel.swift */; };
 		37B9593E1FDA30F500CED0EE /* ArticleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37B9593D1FDA30F500CED0EE /* ArticleHeaderView.xib */; };
 		37B959401FDA32F800CED0EE /* ArticleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B9593F1FDA32F800CED0EE /* ArticleHeaderView.swift */; };
+		37B959651FDA4B1400CED0EE /* NibExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B959641FDA4B1400CED0EE /* NibExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		37B9593B1FDA24AA00CED0EE /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		37B9593D1FDA30F500CED0EE /* ArticleHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleHeaderView.xib; sourceTree = "<group>"; };
 		37B9593F1FDA32F800CED0EE /* ArticleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleHeaderView.swift; sourceTree = "<group>"; };
+		37B959641FDA4B1400CED0EE /* NibExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				37B9593D1FDA30F500CED0EE /* ArticleHeaderView.xib */,
 				37B959321FDA239E00CED0EE /* ArticleListTableViewCell.swift */,
 				37B959331FDA239E00CED0EE /* ArticleListTableViewCell.xib */,
+				37B959641FDA4B1400CED0EE /* NibExtension.swift */,
 				37B9593B1FDA24AA00CED0EE /* ArticleModel.swift */,
 			);
 			path = ArticleList;
@@ -182,6 +185,7 @@
 				37B959301FDA237D00CED0EE /* ArticleListTableViewController.swift in Sources */,
 				37B9593A1FDA248300CED0EE /* UpdateViewController.swift in Sources */,
 				37B9591A1FDA1EF000CED0EE /* AppDelegate.swift in Sources */,
+				37B959651FDA4B1400CED0EE /* NibExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
