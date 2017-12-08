@@ -75,6 +75,8 @@ extension UIStoryboard {
     
     // MARK: Property
     
-    static let edit = UIStoryboard(name: "Main", bundle: nil)
+    static let edit = UIStoryboard(name: "Edit", bundle: nil)
+    
+    static let update = UIStoryboard(name: "Update", bundle: nil)
     
 }

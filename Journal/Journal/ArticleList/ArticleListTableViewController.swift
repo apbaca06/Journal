@@ -44,8 +44,6 @@ class ArticleListTableViewController: UITableViewController {
         
     }
     
-    
-
 
     // MARK: - Table view data source
 
@@ -65,17 +63,25 @@ class ArticleListTableViewController: UITableViewController {
             from: .edit
         )
         
-      
         present(editViewController, animated: true, completion: nil)
-
     }
    
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headerView = UIView.load(nibName:"ArticleHeaderView", bundle: nil) as! ArticleHeaderView
+        let headerView = UIView.load(
+            
+            nibName:"ArticleHeaderView",
+            
+            bundle: nil
+            
+        ) as! ArticleHeaderView
         
-        headerView.plusButton.addTarget(self, action: #selector(addArticle), for: .touchUpInside)
+        headerView.plusButton.addTarget(
+            self,
+            action: #selector(addArticle),
+            for: .touchUpInside
+        )
         
        return headerView
     }
@@ -106,32 +112,33 @@ class ArticleListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let editViewController = EditViewController()
         
-        present(editViewController, animated: true)
+        let updateViewController = UITableViewController.loadViewController(
+            
+            UpdateViewController.self,
+            
+            from: .update
+        )
+        
+        present(updateViewController, animated: true, completion: nil)
         
     }
  
-
-    /*
-    // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+ 
 
-    /*
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
-            // Delete the row from the data source
+
+            articles.remove(at: indexPath.row)
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.

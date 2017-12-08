@@ -8,28 +8,128 @@
 
 import UIKit
 
-class UpdateViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+class UpdateViewController: UIViewController, UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @IBOutlet weak var articleImage: UIImageView!
+    
+    @IBOutlet weak var articleText: UITextView!
+    
+    @IBOutlet weak var articleTitle: UITextView!
+    
+    @IBOutlet weak var updateButton: UIButton!
+    
+    @IBOutlet weak var closeButton: UIButton!
+    
+    @IBOutlet weak var separator: UIView!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .lightContent
+        
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setUpUpdateButton()
+        
+        setLongPressGesture()
+        
+        closeButton.addTarget(self, action: #selector(closeViewController), for: .touchUpInside)
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
     }
-    */
+    
+    func setLongPressGesture() {
+        
+        let longPressGesture = UILongPressGestureRecognizer(
+            target: self,
+            action: #selector(longPress(press:))
+        )
+        
+        longPressGesture.minimumPressDuration = 1.0
+        
+        articleImage.addGestureRecognizer(longPressGesture)
+        
+        articleImage.isUserInteractionEnabled = true
+    }
+    
+    @objc func longPress(press:UILongPressGestureRecognizer){
+        
+        if press.state == .began {
+            
+            changePhoto()
+            
+        }
+    }
+    
+    func changePhoto() {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            
+            let controller = UIImagePickerController()
+            
+            controller.delegate = self
+            
+            controller.sourceType = .photoLibrary
+            
+            self.present(controller, animated: true, completion: nil)
+            
+        }
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
+        guard
+            let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+            else { return }
+        
+        articleImage.image = selectedImage
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func setUpUpdateButton() {
+        
+        updateButton.clipsToBounds = true
+        
+        updateButton.layer.cornerRadius = 22
+        
+        updateButton.layer.shadowColor = UIColor(red: 247/255, green: 174/255, blue: 163/255, alpha: 1).cgColor
+        
+        updateButton.layer.shadowPath = UIBezierPath(rect: updateButton.bounds).cgPath
+        
+        updateButton.addTarget(self, action: #selector(updateArticle), for: .touchUpInside)
+    }
+    
+    @objc func updateArticle() {
+        
+        let revisedArticle = Article(
+            
+            title: articleTitle.text,
+            
+            text: articleText.text
+        )
+        
+        // Todo: revise: update to the original index
+        articles.append(revisedArticle)
+        
+        print(articles)
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
 
+
+    @objc func closeViewController() {
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
 }
