@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
-class Article {
-    var title: String = ""
-    var text : String = ""
+struct Article {
+    var title: String
+    var text : String
 //    var timestamp: Date = ""
 }
+
+var articles: [Article] = []

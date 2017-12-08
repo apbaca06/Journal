@@ -70,47 +70,16 @@ class ArticleListTableViewController: UITableViewController {
         let headerView = UIView.load(nibName:"ArticleHeaderView", bundle: nil) as! ArticleHeaderView
         
         headerView.plusButton.addTarget(self, action: #selector(addArticle), for: .touchUpInside)
-        // swiftlint:enable force_cast
         
         
-//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-//
-//        headerView.backgroundColor = .white
-//
-//        let title = UILabel(frame: CGRect(x: 30, y: 14, width: 200, height: 24))
-//
-//        title.text = "My Journals"
-//
-//        title.textColor = UIColor(red: 67/255, green: 87/255, blue: 97/255, alpha: 1)
-//
-//        headerView.addSubview(title)
-//
-//        let plusButton = UIButton(frame: CGRect(x: 323, y: 2, width: 44, height: 44))
-//
-//        headerView.addSubview(plusButton)
-//
-//        plusButton.setImage(#imageLiteral(resourceName: "icon_plus"), for: .normal)
-//
-//        plusButton.imageView?.tintColor = UIColor(red: 237/255, green: 96/255, blue: 81/255, alpha: 1)
-//
-//        plusButton.addTarget(self, action: #selector(addArticle), for: .touchUpInside)
 
        return headerView
     }
     
-//    @objc func addArticle() {
-//        let storyboard = Bundle.main.
-//        storyboard?.instantiateViewController(withIdentifier: "EditViewController")
-//        present(EditViewController.self, animated: true) {
-//            print("yes~")
-//        }
-//        print("yes")
-//
-//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 5
+
+        return articles.count
     }
     
 
@@ -125,9 +94,9 @@ class ArticleListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let editViewController = EditViewController()
-        present(editViewController, animated: true) {
-            print("u")
-        }
+        
+        present(editViewController, animated: true)
+        
     }
  
 
