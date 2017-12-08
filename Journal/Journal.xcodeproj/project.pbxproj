@@ -13,6 +13,14 @@
 		37B959221FDA1EF000CED0EE /* Journal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37B959201FDA1EF000CED0EE /* Journal.xcdatamodeld */; };
 		37B959241FDA1EF000CED0EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37B959231FDA1EF000CED0EE /* Assets.xcassets */; };
 		37B959271FDA1EF000CED0EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37B959251FDA1EF000CED0EE /* LaunchScreen.storyboard */; };
+		37B959301FDA237D00CED0EE /* ArticleListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B9592E1FDA237D00CED0EE /* ArticleListTableViewController.swift */; };
+		37B959341FDA239E00CED0EE /* ArticleListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B959321FDA239E00CED0EE /* ArticleListTableViewCell.swift */; };
+		37B959351FDA239E00CED0EE /* ArticleListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37B959331FDA239E00CED0EE /* ArticleListTableViewCell.xib */; };
+		37B959381FDA240C00CED0EE /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B959371FDA240C00CED0EE /* EditViewController.swift */; };
+		37B9593A1FDA248300CED0EE /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B959391FDA248300CED0EE /* UpdateViewController.swift */; };
+		37B9593C1FDA24AA00CED0EE /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B9593B1FDA24AA00CED0EE /* ArticleModel.swift */; };
+		37B9593E1FDA30F500CED0EE /* ArticleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37B9593D1FDA30F500CED0EE /* ArticleHeaderView.xib */; };
+		37B959401FDA32F800CED0EE /* ArticleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B9593F1FDA32F800CED0EE /* ArticleHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +32,14 @@
 		37B959231FDA1EF000CED0EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37B959261FDA1EF000CED0EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37B959281FDA1EF000CED0EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37B9592E1FDA237D00CED0EE /* ArticleListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListTableViewController.swift; sourceTree = "<group>"; };
+		37B959321FDA239E00CED0EE /* ArticleListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListTableViewCell.swift; sourceTree = "<group>"; };
+		37B959331FDA239E00CED0EE /* ArticleListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleListTableViewCell.xib; sourceTree = "<group>"; };
+		37B959371FDA240C00CED0EE /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		37B959391FDA248300CED0EE /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
+		37B9593B1FDA24AA00CED0EE /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		37B9593D1FDA30F500CED0EE /* ArticleHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleHeaderView.xib; sourceTree = "<group>"; };
+		37B9593F1FDA32F800CED0EE /* ArticleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +74,9 @@
 			children = (
 				37B959191FDA1EF000CED0EE /* AppDelegate.swift */,
 				37B9591B1FDA1EF000CED0EE /* ViewController.swift */,
+				37B959371FDA240C00CED0EE /* EditViewController.swift */,
+				37B959391FDA248300CED0EE /* UpdateViewController.swift */,
+				37B959361FDA23B200CED0EE /* ArticleList */,
 				37B9591D1FDA1EF000CED0EE /* Main.storyboard */,
 				37B959231FDA1EF000CED0EE /* Assets.xcassets */,
 				37B959251FDA1EF000CED0EE /* LaunchScreen.storyboard */,
@@ -65,6 +84,19 @@
 				37B959201FDA1EF000CED0EE /* Journal.xcdatamodeld */,
 			);
 			path = Journal;
+			sourceTree = "<group>";
+		};
+		37B959361FDA23B200CED0EE /* ArticleList */ = {
+			isa = PBXGroup;
+			children = (
+				37B9592E1FDA237D00CED0EE /* ArticleListTableViewController.swift */,
+				37B9593F1FDA32F800CED0EE /* ArticleHeaderView.swift */,
+				37B9593D1FDA30F500CED0EE /* ArticleHeaderView.xib */,
+				37B959321FDA239E00CED0EE /* ArticleListTableViewCell.swift */,
+				37B959331FDA239E00CED0EE /* ArticleListTableViewCell.xib */,
+				37B9593B1FDA24AA00CED0EE /* ArticleModel.swift */,
+			);
+			path = ArticleList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +158,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37B9593E1FDA30F500CED0EE /* ArticleHeaderView.xib in Resources */,
+				37B959351FDA239E00CED0EE /* ArticleListTableViewCell.xib in Resources */,
 				37B959271FDA1EF000CED0EE /* LaunchScreen.storyboard in Resources */,
 				37B959241FDA1EF000CED0EE /* Assets.xcassets in Resources */,
 				37B9591F1FDA1EF000CED0EE /* Main.storyboard in Resources */,
@@ -139,8 +173,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37B959341FDA239E00CED0EE /* ArticleListTableViewCell.swift in Sources */,
 				37B959221FDA1EF000CED0EE /* Journal.xcdatamodeld in Sources */,
+				37B959381FDA240C00CED0EE /* EditViewController.swift in Sources */,
 				37B9591C1FDA1EF000CED0EE /* ViewController.swift in Sources */,
+				37B9593C1FDA24AA00CED0EE /* ArticleModel.swift in Sources */,
+				37B959401FDA32F800CED0EE /* ArticleHeaderView.swift in Sources */,
+				37B959301FDA237D00CED0EE /* ArticleListTableViewController.swift in Sources */,
+				37B9593A1FDA248300CED0EE /* UpdateViewController.swift in Sources */,
 				37B9591A1FDA1EF000CED0EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

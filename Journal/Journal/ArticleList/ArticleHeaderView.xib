@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="ArticleHeaderView" customClass="ArticleHeaderView" customModule="Journal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Journals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXv-8J-5HK">
+                    <rect key="frame" x="30" y="14" width="283" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hId-bI-Bxy">
+                    <rect key="frame" x="323" y="2" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="hId-bI-Bxy" secondAttribute="height" multiplier="1:1" id="hkc-PS-GCv"/>
+                        <constraint firstAttribute="width" constant="44" id="wyh-fc-J9P"/>
+                    </constraints>
+                    <color key="tintColor" red="0.92941176469999998" green="0.37647058820000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="icon_plus"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="nXv-8J-5HK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="1XC-Fq-cG8"/>
+                <constraint firstItem="nXv-8J-5HK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="14" id="6GP-0m-op0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nXv-8J-5HK" secondAttribute="bottom" constant="12" id="Axl-Hn-LQs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hId-bI-Bxy" secondAttribute="trailing" constant="8" id="MYa-R4-qd7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hId-bI-Bxy" secondAttribute="bottom" constant="4" id="XBe-vh-Qnj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nXv-8J-5HK" secondAttribute="trailing" constant="62" id="ke8-ce-xOc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="headerTitle" destination="nXv-8J-5HK" id="DFd-wT-jtx"/>
+                <outlet property="plusButton" destination="hId-bI-Bxy" id="tkJ-He-2Sy"/>
+            </connections>
+            <point key="canvasLocation" x="-331" y="-148"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_plus" width="44" height="44"/>
+    </resources>
+</document>
